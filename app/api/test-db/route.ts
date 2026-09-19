@@ -11,7 +11,14 @@ export async function GET() {
     try {
         if (url) {
             const prisma = new PrismaClient();
-            result = await prisma.$queryRaw`SELECT 1 as test`;
+            result = await prisma.enquiry.create({
+                data: {
+                    name: "Vercel Diagnostic Bot",
+                    phone: "+1 000 000 0000",
+                    date: new Date().toISOString(),
+                    eventType: "diagnostic_test"
+                }
+            });
         }
     } catch (e: any) {
         dbError = e.message;
