@@ -1,8 +1,19 @@
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+export const dynamic = "force-dynamic";
+
 export const metadata = {
     title: "Admin Dashboard | MAK Auditorium",
 };
 
-export default function AdminDashboardPage() {
+export default async function AdminDashboardPage() {
+    const enquiries = await prisma.enquiry.findMany({
+        orderBy: { createdAt: "desc" },
+    });
+
+    const pendingEnquiries = enquiries.filter(e => e.status === 'new').length;
+
     return (
         <div className="space-y-8">
             {/* Page Header */}
@@ -15,15 +26,17 @@ export default function AdminDashboardPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-white p-6 rounded-lg shadow-sm border border-primary/10">
                     <h3 className="text-sm font-medium text-primary/60 uppercase tracking-widest">Total Enquiries</h3>
-                    <p className="text-4xl font-serif text-primary mt-2">12</p>
+                    <p className="text-4xl font-serif text-primary mt-2">{enquiries.length}</p>
                 </div>
                 <div className="bg-white p-6 rounded-lg shadow-sm border border-primary/10">
-                    <h3 className="text-sm font-medium text-primary/60 uppercase tracking-widest">Pending Tours</h3>
-                    <p className="text-4xl font-serif text-accent mt-2">5</p>
+                    <h3 className="text-sm font-medium text-primary/60 uppercase tracking-widest">Pending Enquiries</h3>
+                    <p className="text-4xl font-serif text-accent mt-2">{pendingEnquiries}</p>
                 </div>
                 <div className="bg-white p-6 rounded-lg shadow-sm border border-primary/10">
-                    <h3 className="text-sm font-medium text-primary/60 uppercase tracking-widest">Confirmed Events</h3>
-                    <p className="text-4xl font-serif text-primary mt-2">3</p>
+                    <h3 className="text-sm font-medium text-primary/60 uppercase tracking-widest">Last Updated</h3>
+                    <p className="text-2xl font-sans text-primary mt-3 text-primary/80">
+                        {enquiries[0] ? new Date(enquiries[0].createdAt).toLocaleDateString() : "Never"}
+                    </p>
                 </div>
             </div>
 
@@ -49,46 +62,35 @@ export default function AdminDashboardPage() {
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-primary/5 text-primary/80">
-                            {/* Mock Data Row 1 */}
-                            <tr className="hover:bg-secondary/30 transition-colors">
-                                <td className="px-6 py-4">
-                                    <p className="font-medium text-primary">Muhammed Ali</p>
-                                    <p className="text-primary/50 text-xs">+91 98765 43210</p>
-                                </td>
-                                <td className="px-6 py-4">Oct 15, 2026</td>
-                                <td className="px-6 py-4">Wedding</td>
-                                <td className="px-6 py-4">800</td>
-                                <td className="px-6 py-4">
-                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                        New
-                                    </span>
-                                </td>
-                                <td className="px-6 py-4 text-right">
-                                    <button className="text-accent hover:text-primary transition-colors text-xs uppercase tracking-widest font-medium">
-                                        Review
-                                    </button>
-                                </td>
-                            </tr>
-                            {/* Mock Data Row 2 */}
-                            <tr className="hover:bg-secondary/30 transition-colors">
-                                <td className="px-6 py-4">
-                                    <p className="font-medium text-primary">Sarah Williams</p>
-                                    <p className="text-primary/50 text-xs">+91 99887 76655</p>
-                                </td>
-                                <td className="px-6 py-4">Nov 22, 2026</td>
-                                <td className="px-6 py-4">Corporate</td>
-                                <td className="px-6 py-4">300</td>
-                                <td className="px-6 py-4">
-                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                        Contacted
-                                    </span>
-                                </td>
-                                <td className="px-6 py-4 text-right">
-                                    <button className="text-accent hover:text-primary transition-colors text-xs uppercase tracking-widest font-medium">
-                                        Review
-                                    </button>
-                                </td>
-                            </tr>
+                            {enquiries.length === 0 ? (
+                                <tr>
+                                    <td colSpan={6} className="px-6 py-8 text-center text-primary/50 italic">
+                                        No enquiries received yet.
+                                    </td>
+                                </tr>
+                            ) : (
+                                enquiries.map((enquiry) => (
+                                    <tr key={enquiry.id} className="hover:bg-secondary/30 transition-colors">
+                                        <td className="px-6 py-4">
+                                            <p className="font-medium text-primary">{enquiry.name}</p>
+                                            <p className="text-primary/50 text-xs">{enquiry.phone} {enquiry.email ? `• ${enquiry.email}` : ''}</p>
+                                        </td>
+                                        <td className="px-6 py-4">{enquiry.date}</td>
+                                        <td className="px-6 py-4 capitalize">{enquiry.eventType}</td>
+                                        <td className="px-6 py-4">{enquiry.guests || "-"}</td>
+                                        <td className="px-6 py-4">
+                                            <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${enquiry.status === 'new' ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}`}>
+                                                {enquiry.status}
+                                            </span>
+                                        </td>
+                                        <td className="px-6 py-4 text-right">
+                                            <button className="text-accent hover:text-primary transition-colors text-xs uppercase tracking-widest font-medium">
+                                                Review
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))
+                            )}
                         </tbody>
                     </table>
                 </div>
