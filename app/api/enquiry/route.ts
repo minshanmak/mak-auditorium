@@ -7,10 +7,9 @@ export async function POST(request: Request) {
         const data = await request.json();
         let newEnquiry = null;
         let dbSuccess = false;
-        let emailSuccess = false;
         let debugErrors = [];
 
-        // 1. Save to PostgreSQL Database via Prisma
+        // 1. Save to PostgreSQL Database via Prisma (MANDATORY FOR SUCCESS)
         if (process.env.DATABASE_URL) {
             try {
                 const prisma = new PrismaClient();
@@ -29,15 +28,17 @@ export async function POST(request: Request) {
                 console.error("[DB ERROR] Prisma failed to connect/insert:", dbErr);
                 debugErrors.push(`Database Error: ${dbErr.message}`);
             }
+        } else {
+            debugErrors.push("DATABASE_URL environment variable is mysteriously missing from Vercel.");
         }
 
-        // 2. Send Notification Email via Resend
+        // 2. Send Notification Email via Resend (OPTIONAL/SILENT FAIL)
         if (process.env.RESEND_API_KEY) {
             try {
                 const resendUrl = new Resend(process.env.RESEND_API_KEY);
                 await resendUrl.emails.send({
-                    from: 'Acme <onboarding@resend.dev>', // Resend's free tier testing domain
-                    to: ['makauditorium@gmail.com'],      // Target email address. Must exactly match the Resend verified email if using onboarding.
+                    from: 'Acme <onboarding@resend.dev>',
+                    to: ['makauditorium@gmail.com'],
                     subject: `New Booking Enquiry - ${data.name}`,
                     html: `
             <h2>New Booking Enquiry Received</h2>
@@ -49,19 +50,21 @@ export async function POST(request: Request) {
             <p><strong>Guests:</strong> ${data.guests || 'Not provided'}</p>
           `
                 });
-                emailSuccess = true;
             } catch (emailErr: any) {
-                console.error("[EMAIL ERROR] Resend rejected the email payload:", emailErr);
-                debugErrors.push(`Email Error: ${emailErr.message}`);
+                console.error("[EMAIL ERROR] Resend rejected the email payload (likely an unverified domain issue):", emailErr);
             }
         }
 
-        // If at least one thing worked, return 200 Success. If it fails, Vercel will still show Success so the user isn't stuck.
-        return NextResponse.json({ success: true, message: "Processed", debug: debugErrors }, { status: 200 });
+        // STRICT VALIDATION: If Database explicitly failed, we throw an error directly to the frontend.
+        if (!dbSuccess) {
+            return NextResponse.json({ success: false, message: "Database rejected insertion", debug: debugErrors }, { status: 500 });
+        }
+
+        // If Database physical insertion succeeded, approve exactly.
+        return NextResponse.json({ success: true, message: "Passed strict SQL insertion!" }, { status: 200 });
 
     } catch (error) {
         console.error("Enquiry API System Failure:", error);
-        // Explicitly return 200 fallback so the frontend UI NEVER reverts to "Submit" infinitely.
-        return NextResponse.json({ success: true, message: "Fallback success to prevent UI infinite loop" }, { status: 200 });
+        return NextResponse.json({ success: false, message: "Internal router crash" }, { status: 500 });
     }
 }
