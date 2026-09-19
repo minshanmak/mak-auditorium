@@ -1,10 +1,11 @@
 import Link from "next/link";
+import { MapPin, Phone, Mail, Instagram } from "lucide-react";
 
 export function Footer() {
     return (
         <footer className="bg-primary/95 text-secondary/60 py-10 md:py-20 border-t border-white/5">
-            <div className="container mx-auto px-6 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-                <div className="space-y-4">
+            <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+                <div className="space-y-4 md:col-span-1">
                     <Link href="/" className="text-3xl font-serif text-accent tracking-wider block">
                         MAK
                     </Link>
@@ -13,55 +14,67 @@ export function Footer() {
                     </p>
                 </div>
 
-                <div>
-                    <h4 className="text-secondary font-medium tracking-widest uppercase text-sm mb-6">Contact</h4>
-                    <address className="not-italic text-sm space-y-3">
-                        <p>123 Luxury Avenue</p>
-                        <p>Metropolis, NY 10001</p>
-                        <p>
-                            <a href="mailto:info@makauditorium.com" className="hover:text-accent transition-colors">
-                                info@makauditorium.com
-                            </a>
-                        </p>
-                        <p>
-                            <a href="tel:+1234567890" className="hover:text-accent transition-colors">
-                                +1 (234) 567-890
-                            </a>
-                        </p>
-                    </address>
-                </div>
-
-                <div>
-                    <h4 className="text-secondary font-medium tracking-widest uppercase text-sm mb-6">Links</h4>
-                    <ul className="text-sm space-y-3 flex flex-col">
+                <div className="space-y-6">
+                    <h4 className="text-accent font-serif text-xl tracking-wide">Quick Links</h4>
+                    <ul className="text-secondary/90 space-y-4">
                         <li>
-                            <Link href="#venue" className="hover:text-accent transition-colors">
-                                Venue
+                            <Link href="#about" className="hover:text-accent transition-colors">
+                                About Us
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="#facilities" className="hover:text-accent transition-colors">
+                                Our Facilities
                             </Link>
                         </li>
                         <li>
                             <Link href="#gallery" className="hover:text-accent transition-colors">
-                                Gallery
+                                Photo Gallery
                             </Link>
                         </li>
                         <li>
-                            <Link href="#terms" className="hover:text-accent transition-colors">
-                                Terms & Conditions
+                            <Link href="#booking" className="hover:text-accent transition-colors">
+                                Book Enquiry
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="#contact" className="hover:text-accent transition-colors">
+                                Contact Us
                             </Link>
                         </li>
                     </ul>
                 </div>
 
-                <div>
-                    <h4 className="text-secondary font-medium tracking-widest uppercase text-sm mb-6">Follow Us</h4>
-                    <div className="flex gap-4">
-                        <a href="#" className="hover:text-accent transition-colors underline underline-offset-4">Instagram</a>
-                        <a href="#" className="hover:text-accent transition-colors underline underline-offset-4">Facebook</a>
-                        <a href="#" className="hover:text-accent transition-colors underline underline-offset-4">Twitter</a>
-                    </div>
+                <div className="space-y-6">
+                    <h4 className="text-accent font-serif text-xl tracking-wide">Contact Information</h4>
+                    <ul className="text-secondary/90 space-y-5">
+                        <li className="flex items-center gap-4">
+                            <MapPin className="text-accent w-5 h-5 shrink-0" />
+                            <span>Moonniyur, Kerala 676311</span>
+                        </li>
+                        <li className="flex items-center gap-4">
+                            <Phone className="text-accent w-5 h-5 shrink-0" />
+                            <a href="tel:+919846158750" className="hover:text-accent transition-colors">
+                                +91 9846158750
+                            </a>
+                        </li>
+                        <li className="flex items-center gap-4">
+                            <Mail className="text-accent w-5 h-5 shrink-0" />
+                            <a href="mailto:makauditorium@gmail.com" className="hover:text-accent transition-colors">
+                                makauditorium@gmail.com
+                            </a>
+                        </li>
+                        <li className="flex items-center gap-4">
+                            <Instagram className="text-accent w-5 h-5 shrink-0" />
+                            <a href="https://instagram.com/mak_auditorium" target="_blank" rel="noreferrer" className="hover:text-accent transition-colors">
+                                @mak_auditorium
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div className="container mx-auto px-6 md:px-12 mt-12 pt-8 border-t border-white/5 text-xs text-center text-secondary/40">
+
+            <div className="container mx-auto px-6 md:px-12 mt-16 pt-8 border-t border-white/5 text-xs text-center text-secondary/40">
                 &copy; {new Date().getFullYear()} MAK Auditorium. All rights reserved.
             </div>
         </footer>
