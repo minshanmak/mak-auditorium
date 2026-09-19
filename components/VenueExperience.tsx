@@ -25,6 +25,7 @@ export function VenueExperience() {
     const targetRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: targetRef,
+        offset: ["start start", "end end"]
     });
 
     const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });

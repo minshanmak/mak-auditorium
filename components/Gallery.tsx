@@ -33,7 +33,7 @@ export function Gallery() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.6, delay: i * 0.1 }}
-                            className="relative w-[80vw] md:w-[500px] aspect-[4/5] md:aspect-video shrink-0 snap-center rounded-sm overflow-hidden group cursor-pointer"
+                            className="relative w-[80vw] md:w-[500px] aspect-[4/5] md:aspect-video shrink-0 snap-start rounded-sm overflow-hidden group cursor-pointer"
                         >
                             <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
                             <img
@@ -43,6 +43,8 @@ export function Gallery() {
                             />
                         </motion.div>
                     ))}
+                    {/* Trailing padding spacer to prevent items from flush right-edge cuts on iOS */}
+                    <div className="w-1 md:w-6 shrink-0" />
                 </div>
             </div>
         </section>
