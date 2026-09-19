@@ -8,6 +8,7 @@ import { Dining } from "@/components/Dining";
 import { Gallery } from "@/components/Gallery";
 import { Facilities } from "@/components/Facilities";
 import { BookingCTA } from "@/components/BookingCTA";
+import { Contact } from "@/components/Contact";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -41,6 +42,7 @@ export default function Home() {
       <Dining />
       <Gallery />
       <Facilities />
+      <Contact />
       <BookingCTA />
     </>
   );

@@ -50,7 +50,7 @@ export function Footer() {
                     <ul className="text-secondary/90 space-y-5">
                         <li className="flex items-center gap-4">
                             <MapPin className="text-accent w-5 h-5 shrink-0" />
-                            <span>Moonniyur, Kerala 676311</span>
+                            <span>Kalathingalpara, Kunnathparamb, Moonniyur, Kerala 676311</span>
                         </li>
                         <li className="flex items-center gap-4">
                             <Phone className="text-accent w-5 h-5 shrink-0" />
