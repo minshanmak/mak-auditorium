@@ -8,7 +8,7 @@ const facilities = [
     { name: "Spacious Dining Area", icon: Utensils, description: "Dedicated and comfortable sections for serving large feasts." },
     { name: "Elegant Balcony", icon: Binoculars, description: "Upper-level gallery seating offering prime views of the stage." },
     { name: "Ample Parking", icon: Car, description: "Spacious and secure parking area for 500+ vehicles." },
-    { name: "24/7 Security", icon: Shield, description: "Comprehensive security personnel and CCTV surveillance." },
+    { name: "CCTV Security", icon: Shield, description: "Comprehensive security personnel and CCTV surveillance." },
     { name: "100% Power Backup", icon: Check, description: "Uninterrupted celebrations with full generator support." },
 ];
 
