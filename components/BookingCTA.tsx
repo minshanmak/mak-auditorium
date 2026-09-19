@@ -23,11 +23,16 @@ export function BookingCTA() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),
             });
+
             if (res.ok) {
                 setIsSuccess(true);
+            } else {
+                const responseData = await res.json();
+                alert("System Error: The live database completely rejected the submission! \n\nReason: " + JSON.stringify(responseData.debug || "Unknown database drop"));
             }
         } catch (error) {
             console.error("Submission failed", error);
+            alert("Network Error: Could not connect to the booking server.");
         } finally {
             setIsSubmitting(false);
         }
