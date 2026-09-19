@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function Stage() {
     return (
@@ -32,33 +33,37 @@ export function Stage() {
                 </div>
 
                 <motion.div
-                    className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[55%] aspect-square lg:aspect-[4/3] z-10"
+                    className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[55%] aspect-square lg:aspect-[4/3] z-10 overflow-hidden shadow-2xl"
                     initial={{ opacity: 0, x: 100 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 1, ease: "easeOut" }}
                 >
-                    <img
+                    <Image
                         src="/images/stage-view.png"
                         alt="The Stage"
-                        className="w-full h-full object-cover shadow-2xl"
+                        fill
+                        className="object-cover"
                     />
                 </motion.div>
             </div>
 
             {/* Mobile Image */}
             <motion.div
-                className="md:hidden w-full aspect-[4/3] mt-8 px-4"
+                className="md:hidden w-full px-4 mt-8"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
             >
-                <img
-                    src="/images/stage-view.png"
-                    alt="The Stage"
-                    className="w-full h-full object-cover shadow-xl"
-                />
+                <div className="w-full aspect-[4/3] relative shadow-xl overflow-hidden rounded-sm">
+                    <Image
+                        src="/images/stage-view.png"
+                        alt="The Stage"
+                        fill
+                        className="object-cover"
+                    />
+                </div>
             </motion.div>
         </section>
     );

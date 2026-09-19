@@ -1,16 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Button } from "./Button";
 
 export function BookingCTA() {
     return (
         <section className="relative py-20 md:py-48 overflow-hidden bg-secondary text-primary">
-            <div className="absolute inset-0 opacity-10 pointer-events-none">
-                <img
+            <div className="absolute inset-x-0 -top-1/4 h-[150%] opacity-10 pointer-events-none">
+                <Image
                     src="/images/outside-view.png"
                     alt="Background Texture"
-                    className="w-full h-full object-cover grayscale"
+                    fill
+                    quality={60}
+                    className="object-cover grayscale"
                 />
             </div>
 

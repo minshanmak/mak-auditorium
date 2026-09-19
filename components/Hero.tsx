@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Button } from "./Button";
 
 export function Hero() {
@@ -8,10 +9,13 @@ export function Hero() {
         <section className="relative h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden">
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-primary/40 z-10" />
-                <img
+                <Image
                     src="/images/outside-view.png"
                     alt="MAK Auditorium Exterior"
-                    className="w-full h-full object-cover"
+                    fill
+                    priority
+                    quality={90}
+                    className="object-cover"
                 />
             </div>
 

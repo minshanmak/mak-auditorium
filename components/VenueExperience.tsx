@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const experiences = [
     {
@@ -36,10 +37,11 @@ export function VenueExperience() {
                         <div key={index} className="w-[85vw] md:w-[900px] flex flex-col md:flex-row gap-6 md:gap-10 shrink-0 snap-start bg-secondary/5 border border-white/10 p-6 md:p-10 rounded-sm">
                             <div className="w-full md:w-1/2 aspect-square md:aspect-[4/3] overflow-hidden relative shadow-2xl rounded-sm">
                                 <div className="absolute inset-0 bg-primary/20 z-10" />
-                                <img
+                                <Image
                                     src={exp.image}
                                     alt={exp.title}
-                                    className="w-full h-full object-cover"
+                                    fill
+                                    className="object-cover"
                                 />
                             </div>
                             <div className="w-full md:w-1/2 flex flex-col justify-center">

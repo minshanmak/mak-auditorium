@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import Image from "next/image";
 
 export function MainHall() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -20,10 +21,13 @@ export function MainHall() {
                 <motion.div style={{ scale, willChange: "transform" }} className="absolute inset-x-0 mx-4 md:mx-12 h-[80dvh] overflow-hidden rounded-sm shadow-2xl">
                     <motion.div style={{ y, willChange: "transform" }} className="w-full h-[140%] relative -top-[20%]">
                         <div className="absolute inset-0 bg-primary/30 z-10" />
-                        <img
+                        <Image
                             src="/images/balcony-ground-floor.png"
                             alt="Main Hall Overview"
-                            className="w-full h-full object-cover"
+                            fill
+                            priority
+                            quality={85}
+                            className="object-cover"
                         />
                     </motion.div>
                 </motion.div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function Introduction() {
     return (
@@ -35,18 +36,22 @@ export function Introduction() {
                         className="relative"
                     >
                         <div className="aspect-[4/5] md:aspect-[3/4] relative overflow-hidden flex shadow-2xl">
-                            <img
+                            <Image
                                 src="/images/entry.png"
                                 alt="MAK Auditorium Grand Entrance"
-                                className="w-full h-full object-cover"
+                                fill
+                                className="object-cover"
                             />
                         </div>
                         <div className="absolute -bottom-4 -left-4 md:-bottom-12 md:-left-12 aspect-square w-1/2 md:w-2/5 p-2 bg-secondary shadow-xl">
-                            <img
-                                src="/images/car-porche.png"
-                                alt="Car Porche"
-                                className="w-full h-full object-cover"
-                            />
+                            <div className="relative w-full h-full">
+                                <Image
+                                    src="/images/car-porche.png"
+                                    alt="Car Porche"
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
                         </div>
                     </motion.div>
                 </div>

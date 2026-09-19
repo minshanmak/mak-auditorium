@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import Image from "next/image";
 
 export function Dining() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -17,10 +18,11 @@ export function Dining() {
         <section ref={containerRef} className="relative h-[70dvh] md:h-[100dvh] w-full overflow-hidden bg-primary flex items-center justify-center">
             <motion.div style={{ y, willChange: "transform" }} className="absolute inset-0 z-0 origin-center scale-110">
                 <div className="absolute inset-0 bg-primary/60 z-10" />
-                <img
+                <Image
                     src="/images/dining-view.png"
                     alt="Dining Area"
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                 />
             </motion.div>
 

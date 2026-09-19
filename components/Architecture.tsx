@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function Architecture() {
     return (
@@ -15,11 +16,12 @@ export function Architecture() {
                         transition={{ duration: 0.8 }}
                         className="md:col-span-5 md:col-start-1"
                     >
-                        <div className="aspect-[4/3] md:aspect-[3/4] relative overflow-hidden shadow-2xl">
-                            <img
+                        <div className="aspect-[4/3] md:aspect-[3/4] relative overflow-hidden shadow-2xl rounded-sm">
+                            <Image
                                 src="/images/outside-view.png"
                                 alt="Architecture Details"
-                                className="w-full h-full object-cover"
+                                fill
+                                className="object-cover"
                             />
                         </div>
                     </motion.div>
