@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export function Introduction() {
     return (
-        <section id="venue" className="py-16 md:py-36 bg-secondary text-primary">
+        <section id="about" className="py-16 md:py-36 bg-secondary text-primary">
             <div className="container mx-auto px-6 md:px-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
                     <motion.div

@@ -6,7 +6,7 @@ import { Button } from "./Button";
 
 export function BookingCTA() {
     return (
-        <section className="relative py-20 md:py-48 overflow-hidden bg-secondary text-primary">
+        <section id="booking" className="relative py-20 md:py-48 overflow-hidden bg-secondary text-primary">
             <div className="absolute inset-x-0 -top-1/4 h-[150%] opacity-10 pointer-events-none">
                 <Image
                     src="/images/outside-view.png"

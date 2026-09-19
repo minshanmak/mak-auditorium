@@ -17,7 +17,7 @@ export function Header() {
     });
 
     const navLinks = [
-        { name: "Venue", href: "#venue" },
+        { name: "About Us", href: "#about" },
         { name: "Facilities", href: "#facilities" },
         { name: "Gallery", href: "#gallery" },
         { name: "Contact", href: "#contact" },
@@ -49,9 +49,11 @@ export function Header() {
                             {link.name}
                         </Link>
                     ))}
-                    <Button variant="outline" size="sm" className="ml-4">
-                        Book Now
-                    </Button>
+                    <a href="#booking" className="ml-4">
+                        <Button variant="outline" size="sm">
+                            Book Now
+                        </Button>
+                    </a>
                 </nav>
 
                 {/* Mobile Toggle */}
@@ -81,9 +83,11 @@ export function Header() {
                             {link.name}
                         </Link>
                     ))}
-                    <Button variant="outline" className="w-full mt-4">
-                        Book Now
-                    </Button>
+                    <a href="#booking" className="w-full mt-4" onClick={() => setIsMobileMenuOpen(false)}>
+                        <Button variant="outline" className="w-full">
+                            Book Now
+                        </Button>
+                    </a>
                 </motion.div>
             )}
         </motion.header>

@@ -33,11 +33,6 @@ export function Footer() {
                             </Link>
                         </li>
                         <li>
-                            <Link href="#booking" className="hover:text-accent transition-colors">
-                                Book Enquiry
-                            </Link>
-                        </li>
-                        <li>
                             <Link href="#contact" className="hover:text-accent transition-colors">
                                 Contact Us
                             </Link>
