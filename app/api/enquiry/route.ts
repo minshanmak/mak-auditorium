@@ -2,11 +2,6 @@ import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { Resend } from "resend";
 
-// Initialize external clients. 
-// Note: In Next.js App Router, global Prisma singletons are standard for dev environments, but inline is fine here for serverless.
-const prisma = new PrismaClient();
-const resendUrl = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-
 export async function POST(request: Request) {
     try {
         const data = await request.json();
@@ -14,6 +9,7 @@ export async function POST(request: Request) {
         // 1. Save to PostgreSQL Database via Prisma
         let newEnquiry = null;
         if (process.env.DATABASE_URL) {
+            const prisma = new PrismaClient();
             newEnquiry = await prisma.enquiry.create({
                 data: {
                     name: data.name,
@@ -30,7 +26,8 @@ export async function POST(request: Request) {
         }
 
         // 2. Send Notification Email via Resend
-        if (resendUrl) {
+        if (process.env.RESEND_API_KEY) {
+            const resendUrl = new Resend(process.env.RESEND_API_KEY);
             await resendUrl.emails.send({
                 from: 'Acme <onboarding@resend.dev>', // Resend's free tier testing domain
                 to: ['makauditorium@gmail.com'],      // Target email address

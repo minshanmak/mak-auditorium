@@ -1,6 +1,5 @@
 import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
 export const dynamic = "force-dynamic";
 
 export const metadata = {
@@ -8,9 +7,18 @@ export const metadata = {
 };
 
 export default async function AdminDashboardPage() {
-    const enquiries = await prisma.enquiry.findMany({
-        orderBy: { createdAt: "desc" },
-    });
+    let enquiries: any[] = [];
+
+    try {
+        if (process.env.DATABASE_URL) {
+            const prisma = new PrismaClient();
+            enquiries = await prisma.enquiry.findMany({
+                orderBy: { createdAt: "desc" },
+            });
+        }
+    } catch (error) {
+        console.error("Database connection failed during render:", error);
+    }
 
     const pendingEnquiries = enquiries.filter(e => e.status === 'new').length;
 
