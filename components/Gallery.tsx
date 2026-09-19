@@ -2,9 +2,14 @@
 import { motion } from "framer-motion";
 
 const images = [
+    "/images/outside-view.png",
     "/images/outside-side-view.png",
-    "/images/car-porche.png",
     "/images/entry.png",
+    "/images/car-porche.png",
+    "/images/hall-siting-view.png",
+    "/images/balcony-ground-floor.png",
+    "/images/first-floor-balcony.png",
+    "/images/sitout.png",
     "/images/dining-view.png",
     "/images/stage-view.png",
 ];
