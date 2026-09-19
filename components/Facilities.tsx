@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Car, Shield, Utensils, Crown, Binoculars } from "lucide-react";
+import { Check, Car, Video, Utensils, Crown, Binoculars } from "lucide-react";
 
 const facilities = [
     { name: "Grand Main Hall", icon: Crown, description: "A beautifully designed, expansive space perfect for your main events." },
     { name: "Spacious Dining Area", icon: Utensils, description: "Dedicated and comfortable sections for serving large feasts." },
     { name: "Elegant Balcony", icon: Binoculars, description: "Upper-level gallery seating offering prime views of the stage." },
     { name: "Ample Parking", icon: Car, description: "Spacious and secure parking area for 500+ vehicles." },
-    { name: "CCTV Security", icon: Shield, description: "Comprehensive security personnel and CCTV surveillance." },
+    { name: "CCTV Security", icon: Video, description: "Constant video recording and complete premises surveillance." },
     { name: "100% Power Backup", icon: Check, description: "Uninterrupted celebrations with full generator support." },
 ];
 
