@@ -1,11 +1,15 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary: #111111; /* Deep Charcoal */
-  --color-secondary: #F6F3EC; /* Warm Ivory */
-  --color-accent: #C6A15B; /* Champagne Gold */
-  --color-supporting: #123E3B; /* Deep Green */
-  
+  --color-primary: #111111;
+  /* Deep Charcoal */
+  --color-secondary: #F6F3EC;
+  /* Warm Ivory */
+  --color-accent: #C6A15B;
+  /* Champagne Gold */
+  --color-supporting: #123E3B;
+  /* Deep Green */
+
   --font-sans: var(--font-inter);
   --font-serif: var(--font-playfair);
 }
@@ -24,4 +28,6 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
 }

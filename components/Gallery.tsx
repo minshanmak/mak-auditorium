@@ -25,7 +25,7 @@ export function Gallery() {
             </div>
 
             <div className="relative w-full">
-                <div className="flex gap-3 md:gap-8 overflow-x-auto snap-x snap-mandatory px-6 md:px-12 pb-12 hide-scrollbar">
+                <div className="flex gap-3 md:gap-8 overflow-x-auto overscroll-x-contain snap-x snap-mandatory px-6 md:px-12 pb-12 hide-scrollbar">
                     {images.map((src, i) => (
                         <motion.div
                             key={i}
