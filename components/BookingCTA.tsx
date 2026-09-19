@@ -36,13 +36,13 @@ export function BookingCTA() {
 
                     <form className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto mt-12 text-left" onSubmit={(e) => e.preventDefault()}>
                         <div className="flex flex-col">
-                            <label className="text-xs uppercase tracking-widest text-primary/50 mb-2 font-medium">Full Name</label>
-                            <input type="text" placeholder="Your Name" className="bg-transparent border-b border-primary/20 pb-2 focus:outline-none focus:border-accent transition-colors text-primary placeholder:text-primary/30 rounded-none h-10 w-full" />
+                            <label className="flex gap-1 text-xs uppercase tracking-widest text-primary/50 mb-2 font-medium">Full Name <span className="text-accent">*</span></label>
+                            <input required type="text" placeholder="Your Name" className="bg-transparent border-b border-primary/20 pb-2 focus:outline-none focus:border-accent transition-colors text-primary placeholder:text-primary/30 rounded-none h-10 w-full" />
                         </div>
 
                         <div className="flex flex-col">
-                            <label className="text-xs uppercase tracking-widest text-primary/50 mb-2 font-medium">Phone Number</label>
-                            <input type="tel" placeholder="Your Phone Number" className="bg-transparent border-b border-primary/20 pb-2 focus:outline-none focus:border-accent transition-colors text-primary placeholder:text-primary/30 rounded-none h-10 w-full" />
+                            <label className="flex gap-1 text-xs uppercase tracking-widest text-primary/50 mb-2 font-medium">Phone Number <span className="text-accent">*</span></label>
+                            <input required type="tel" placeholder="Your Phone Number" className="bg-transparent border-b border-primary/20 pb-2 focus:outline-none focus:border-accent transition-colors text-primary placeholder:text-primary/30 rounded-none h-10 w-full" />
                         </div>
 
                         <div className="flex flex-col">
@@ -51,8 +51,13 @@ export function BookingCTA() {
                         </div>
 
                         <div className="flex flex-col">
-                            <label className="text-xs uppercase tracking-widest text-primary/50 mb-2 font-medium">Event Type</label>
-                            <select defaultValue="" className="bg-transparent border-b border-primary/20 pb-2 focus:outline-none focus:border-accent transition-colors text-primary rounded-none h-10 w-full cursor-pointer appearance-none">
+                            <label className="flex gap-1 text-xs uppercase tracking-widest text-primary/50 mb-2 font-medium">Event Date <span className="text-accent">*</span></label>
+                            <input required type="date" className="bg-transparent border-b border-primary/20 pb-2 focus:outline-none focus:border-accent transition-colors text-primary placeholder:text-primary/30 rounded-none h-10 w-full placeholder-transparent [&::-webkit-calendar-picker-indicator]:opacity-50 [&::-webkit-calendar-picker-indicator]:invert" />
+                        </div>
+
+                        <div className="flex flex-col">
+                            <label className="flex gap-1 text-xs uppercase tracking-widest text-primary/50 mb-2 font-medium">Event Type <span className="text-accent">*</span></label>
+                            <select required defaultValue="" className="bg-transparent border-b border-primary/20 pb-2 focus:outline-none focus:border-accent transition-colors text-primary rounded-none h-10 w-full cursor-pointer appearance-none">
                                 <option value="" disabled className="text-primary/40">Select Event Type</option>
                                 <option value="wedding">Wedding / Reception</option>
                                 <option value="corporate">Corporate Event</option>
@@ -61,7 +66,7 @@ export function BookingCTA() {
                             </select>
                         </div>
 
-                        <div className="flex flex-col md:col-span-2">
+                        <div className="flex flex-col">
                             <label className="text-xs uppercase tracking-widest text-primary/50 mb-2 font-medium">Number of Guests (Approx.)</label>
                             <input type="number" placeholder="E.g., 500" className="bg-transparent border-b border-primary/20 pb-2 focus:outline-none focus:border-accent transition-colors text-primary placeholder:text-primary/30 rounded-none h-10 w-full" />
                         </div>
