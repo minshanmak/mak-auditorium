@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 export function Dining() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -10,11 +10,12 @@ export function Dining() {
         offset: ["start end", "end start"],
     });
 
-    const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+    const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+    const y = useTransform(smoothProgress, [0, 1], ["-15%", "15%"]);
 
     return (
         <section ref={containerRef} className="relative h-[70dvh] md:h-[100dvh] w-full overflow-hidden bg-primary flex items-center justify-center">
-            <motion.div style={{ y }} className="absolute inset-0 z-0 origin-center scale-110">
+            <motion.div style={{ y, willChange: "transform" }} className="absolute inset-0 z-0 origin-center scale-110">
                 <div className="absolute inset-0 bg-primary/60 z-10" />
                 <img
                     src="/images/dining-view.png"

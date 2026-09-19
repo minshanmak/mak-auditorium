@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 const experiences = [
     {
@@ -27,7 +27,8 @@ export function VenueExperience() {
         target: targetRef,
     });
 
-    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-66.66%"]);
+    const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+    const x = useTransform(smoothProgress, [0, 1], ["0%", "-66.66%"]);
 
     return (
         <section ref={targetRef} className="relative h-[250dvh] md:h-[300dvh] bg-primary">
@@ -39,7 +40,7 @@ export function VenueExperience() {
                     <div className="w-24 h-px bg-accent/50" />
                 </div>
 
-                <motion.div style={{ x }} className="flex w-[300vw] h-full items-center pt-24 pb-12">
+                <motion.div style={{ x, willChange: "transform" }} className="flex w-[300vw] h-full items-center pt-24 pb-12">
                     {experiences.map((exp, index) => (
                         <div key={index} className="w-[100vw] h-[55dvh] md:h-[70dvh] flex flex-col md:flex-row gap-4 md:gap-8 items-center justify-center px-4 md:px-20 shrink-0">
                             <div className="w-full md:w-1/2 aspect-[4/3] md:aspect-[4/3] overflow-hidden relative shadow-2xl">

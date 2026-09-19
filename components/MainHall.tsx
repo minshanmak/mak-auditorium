@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 export function MainHall() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -10,14 +10,15 @@ export function MainHall() {
         offset: ["start end", "end start"],
     });
 
-    const y = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
-    const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
+    const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+    const y = useTransform(smoothProgress, [0, 1], ["-20%", "20%"]);
+    const scale = useTransform(smoothProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
 
     return (
         <section ref={containerRef} className="relative h-[150dvh] bg-secondary text-primary">
             <div className="sticky top-0 h-[100dvh] w-full overflow-hidden flex items-center justify-center">
-                <motion.div style={{ scale }} className="absolute inset-x-0 mx-4 md:mx-12 h-[80dvh] overflow-hidden rounded-sm shadow-2xl">
-                    <motion.div style={{ y }} className="w-full h-[140%] relative -top-[20%]">
+                <motion.div style={{ scale, willChange: "transform" }} className="absolute inset-x-0 mx-4 md:mx-12 h-[80dvh] overflow-hidden rounded-sm shadow-2xl">
+                    <motion.div style={{ y, willChange: "transform" }} className="w-full h-[140%] relative -top-[20%]">
                         <div className="absolute inset-0 bg-primary/30 z-10" />
                         <img
                             src="/images/balcony-ground-floor.png"
