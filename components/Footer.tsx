@@ -77,6 +77,9 @@ export function Footer() {
             <div className="container mx-auto px-6 md:px-12 mt-16 pt-8 border-t border-white/5 text-xs text-center text-secondary/40">
                 &copy; {new Date().getFullYear()} MAK Auditorium. All rights reserved.
             </div>
+            <div className="container mx-auto px-6 md:px-12 mt-16 pt-8 border-t border-white/5 text-xs text-center text-secondary/40">
+                Developed By  <a href="https://mishga.vercel.app/" >MishGa</a>
+            </div>
         </footer>
     );
 }
