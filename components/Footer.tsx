@@ -18,24 +18,24 @@ export function Footer() {
                     <h4 className="text-accent font-serif text-xl tracking-wide">Quick Links</h4>
                     <ul className="text-secondary/90 space-y-4">
                         <li>
-                            <Link href="#about" className="hover:text-accent transition-colors">
+                            <a href="#about" className="hover:text-accent transition-colors">
                                 About Us
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href="#facilities" className="hover:text-accent transition-colors">
+                            <a href="#facilities" className="hover:text-accent transition-colors">
                                 Our Facilities
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href="#gallery" className="hover:text-accent transition-colors">
+                            <a href="#gallery" className="hover:text-accent transition-colors">
                                 Photo Gallery
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href="#contact" className="hover:text-accent transition-colors">
+                            <a href="#contact" className="hover:text-accent transition-colors">
                                 Contact Us
-                            </Link>
+                            </a>
                         </li>
                     </ul>
                 </div>
