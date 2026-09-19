@@ -39,12 +39,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} h-full antialiased dark`}>
-      <body className="min-h-full flex flex-col bg-background text-foreground overflow-x-hidden">
-        <Header />
-        <main className="flex-1">
-          {children}
-        </main>
-        <Footer />
+      <body className="min-h-full flex flex-col bg-background text-foreground">
+        <div className="relative flex flex-col min-h-screen w-full max-w-[100vw] overflow-x-hidden">
+          <Header />
+          <main className="flex-1 w-full">
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
