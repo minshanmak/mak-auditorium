@@ -50,8 +50,8 @@ export function Hero() {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: 0.8 }}
                 >
-                    <Button size="lg" className="px-6 md:px-12 w-full md:w-auto">
-                        Explore Venue
+                    <Button size="lg" className="px-6 md:px-12 w-full md:w-auto" onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}>
+                        Book Now
                     </Button>
                 </motion.div>
             </div>
