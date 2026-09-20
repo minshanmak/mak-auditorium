@@ -45,7 +45,6 @@ export function BookingCTA() {
                     src="/images/outside-view.png"
                     alt="Background Texture"
                     fill
-                    quality={60}
                     sizes="100vw"
                     className="object-cover grayscale"
                 />

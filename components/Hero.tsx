@@ -14,7 +14,6 @@ export function Hero() {
                     alt="MAK Auditorium Exterior"
                     fill
                     priority
-                    quality={60}
                     sizes="100vw"
                     className="object-cover"
                 />

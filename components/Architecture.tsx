@@ -21,7 +21,6 @@ export function Architecture() {
                                 src="/images/outside-view.png"
                                 alt="Architecture Details"
                                 fill
-                                quality={60}
                                 sizes="(max-width: 768px) 100vw, 40vw"
                                 className="object-cover"
                             />

@@ -43,7 +43,6 @@ export function Stage() {
                         src="/images/stage-view.png"
                         alt="The Stage"
                         fill
-                        quality={60}
                         sizes="(max-width: 768px) 0vw, 55vw"
                         className="object-cover"
                     />
@@ -63,7 +62,6 @@ export function Stage() {
                         src="/images/stage-view.png"
                         alt="The Stage"
                         fill
-                        quality={60}
                         sizes="(max-width: 768px) 100vw, 0vw"
                         className="object-cover"
                     />

@@ -41,7 +41,6 @@ export function VenueExperience() {
                                     src={exp.image}
                                     alt={exp.title}
                                     fill
-                                    quality={50}
                                     sizes="(max-width: 768px) 85vw, 450px"
                                     className="object-cover"
                                 />

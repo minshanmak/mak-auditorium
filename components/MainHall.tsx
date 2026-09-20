@@ -26,7 +26,6 @@ export function MainHall() {
                             alt="Main Hall Overview"
                             fill
                             priority
-                            quality={60}
                             sizes="100vw"
                             className="object-cover"
                         />

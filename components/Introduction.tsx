@@ -40,7 +40,6 @@ export function Introduction() {
                                 src="/images/entry.png"
                                 alt="MAK Auditorium Grand Entrance"
                                 fill
-                                quality={60}
                                 sizes="(max-width: 768px) 100vw, 50vw"
                                 className="object-cover"
                             />
@@ -51,7 +50,6 @@ export function Introduction() {
                                     src="/images/car-porche.png"
                                     alt="Car Porche"
                                     fill
-                                    quality={60}
                                     sizes="(max-width: 768px) 50vw, 20vw"
                                     className="object-cover"
                                 />
