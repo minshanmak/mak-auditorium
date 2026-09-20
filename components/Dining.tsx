@@ -22,6 +22,8 @@ export function Dining() {
                     src="/images/dining-view.png"
                     alt="Dining Area"
                     fill
+                    quality={60}
+                    sizes="100vw"
                     className="object-cover"
                 />
             </motion.div>

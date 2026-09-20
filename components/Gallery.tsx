@@ -46,6 +46,7 @@ export function Gallery() {
                                 src={src}
                                 alt={`Gallery image ${i + 1}`}
                                 fill
+                                quality={50}
                                 sizes="(max-width: 768px) 80vw, 500px"
                                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                             />

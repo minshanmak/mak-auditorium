@@ -26,7 +26,8 @@ export function MainHall() {
                             alt="Main Hall Overview"
                             fill
                             priority
-                            quality={85}
+                            quality={60}
+                            sizes="100vw"
                             className="object-cover"
                         />
                     </motion.div>

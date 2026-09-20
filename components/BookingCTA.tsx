@@ -46,6 +46,7 @@ export function BookingCTA() {
                     alt="Background Texture"
                     fill
                     quality={60}
+                    sizes="100vw"
                     className="object-cover grayscale"
                 />
             </div>
